@@ -1,0 +1,61 @@
+.footer {
+  background: #000;
+  color: #cbd5e1;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: "Tajawal", sans-serif;
+
+  .footer-content {
+    max-width: 800px;
+    margin: auto;
+
+    .logo {
+      i {
+        font-size: 2rem;
+        color: #6366f1;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        color: white;
+        margin: 0.5rem 0;
+      }
+
+      p {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+
+      a {
+        color: #94a3b8;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #6366f1;
+        }
+      }
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #1e293b;
+      margin: 1.5rem 0;
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+  }
+}
+ 
