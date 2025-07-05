@@ -1,0 +1,69 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  direction: rtl;
+  text-align: right;
+  font-family: 'Tajawal', sans-serif;
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #4f46e5;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #4f46e5;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .google-btn {
+    margin-top: 1rem;
+    background-color: #ea4335;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .toggle {
+    color: #4f46e5;
+    margin-top: 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+}

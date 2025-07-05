@@ -3,8 +3,12 @@ import "../styles/Sections.scss"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import LoginButton from "../components/LoginButton";
 import Footer from "../components/Footer";
+import AuthModal from '../components/AuthModal'
+import { useState } from "react";
 
 function Header(){
+  const [showLogin, setShowLogin] = useState(false);
+
     return(
      <header className="header">
         <div className="icon"><i className="fas fa-robot"></i>
@@ -17,8 +21,9 @@ function Header(){
          مستقبل خدمة العملاء الذكية - حلول الذكاء الاصطناعي المتطورة لتحسين تجربة العملاء وزيادة الكفاءة التشغيلية
         </p>
         <div className="header-buttons">
-          <button className="start-button">ابداء معنا +</button>
-          <button className="demo-button">تجربة مجانية</button>
+          <button className="start-button" onClick={() => setShowLogin(true)}>ابداء معنا +</button>
+          <button className="demo-button" onClick={() => setShowLogin(true)}>تجربة مجانية</button>
+          {showLogin && <AuthModal onClose={() => setShowLogin(false)} />}
           <LoginButton />
         </div>
       </header>
@@ -28,7 +33,7 @@ function Header(){
 // home page sections
 function ExecutiveSummary() {
   return (
-    <section className="executive-summary" dir="rtl">
+    <section className="executive-summary">
       <div className="container">
         <div className="title-section">
           <h2>الملخص التنفيذي</h2>
@@ -36,7 +41,7 @@ function ExecutiveSummary() {
         </div>
 
         <div className="content">
-              <div className="description">
+            <div className="description">
             <h3>ما هو صديقي؟</h3>
             <p>
               منصة صديقي هي حل متكامل للذكاء الاصطناعي يحول طريقة تفاعل الشركات مع عملائها.
@@ -53,20 +58,20 @@ function ExecutiveSummary() {
             <h3>إحصائيات النجاح</h3>
             <div className="grid">
               <div className="card green">
+                <p className="value">300%</p>
+                <p className="label">زيادة الكفاءة</p>
+              </div>
+              <div className="card blue">
                 <p className="value">87%</p>
                 <p className="label">معدل رضا العملاء</p>
               </div>
-              <div className="card blue">
-                 <p className="value">300%</p>
-                <p className="label">زيادة الكفاءة</p>
-              </div>
               <div className="card red">
-                <p className="value">24/7</p>
-                <p className="label">خدمة مستمرة</p>
+                <p className="value">70%</p>
+                <p className="label">توفير التكاليف</p>
               </div>
               <div className="card purple">
-                  <p className="value">70%</p>
-                  <p className="label">توفير التكاليف</p>
+                <p className="value">24/7</p>
+                <p className="label">خدمة مستمرة</p>
               </div>
             </div>
           </div>
@@ -77,6 +82,8 @@ function ExecutiveSummary() {
     </section>
   );
 }
+
+
 
 function TechArchitecture() {
   return (
@@ -496,20 +503,6 @@ function SuccessStory() {
         <p className="subtitle">مثال حي من عملائنا الناجحين</p>
 
         <div className="story-box">
-          <div className="results-box">
-            <h3>النتائج المحققة</h3>
-            <ul>
-              <li><span className="badge green">85% أسرع</span>تحسن وقت الاستجابة</li>
-              <li><span className="badge blue">200%</span>زيادة الحجوزات</li>
-              <li><span className="badge purple">97%</span>رضا المرضى</li>
-              <li><span className="badge gray">60%</span>توفير التكاليف</li>
-            </ul>
-            <hr />
-            <a className="cta-button">
-              <i className="fab fa-telegram-plane"></i> جرب البوت الآن
-            </a>
-          </div>
-
           <div className="story-content">
             <div className="client-info">
               <h3>شركة صحيح الطبية</h3>
@@ -524,6 +517,25 @@ function SuccessStory() {
               </div>
             </div>
           </div>
+          <div className="results-box">
+            <h3>النتائج المحققة</h3>
+            <ul>
+              <li>تحسن وقت الاستجابة
+                <span className="badge green">85% أسرع</span></li>
+              <li>زيادة الحجوزات
+                <span className="badge blue">200%</span></li>
+              <li>رضا المرضى
+                <span className="badge purple">97%</span></li>
+              <li>توفير التكاليف
+                <span className="badge gray">60%</span></li>
+            </ul>
+            <hr />
+            <a className="cta-button">
+              <i className="fab fa-telegram-plane"></i> جرب البوت الآن
+            </a>
+          </div>
+
+          
         </div>
       </div>
     </section>
@@ -535,23 +547,23 @@ function PricingPlans() {
     <section className="pricing-plans" dir="rtl">
       <div className="container">
         <h2 className="title">الباقات والأسعار</h2>
+                    <div className="underline"></div>
         <p className="subtitle">خطط مرنة تناسب جميع أحجام الأعمال</p>
 
         <div className="plans">
-          <div className="plan">
-            <h3>باقة المؤسسات</h3>
-            <p className="price"><strong>سعر مخصص</strong><br />حسب الاحتياجات</p>
+         
+           <div className="plan">
+            <h3>الباقة الأساسية</h3>
+            <p className="price">$299 <span>شهريًا</span></p>
             <ul>
-              <li>محادثات غير محدودة</li>
-              <li>جميع المنصات + واجهة ويب</li>
-              <li>مدير حساب مخصص</li>
-              <li>SLA مضمون</li>
-              <li>حلول مخصصة بالكامل</li>
-              <li>دعم متقدم للذكاء الاصطناعي</li>
+              <li>حتى 1,000 محادثة شهريًا</li>
+              <li>منصة واحدة (تليجرام أو واتساب)</li>
+              <li>دعم تقني عادي</li>
+              <li>تقارير أساسية</li>
+              <li>إعداد مجاني</li>
             </ul>
-            <a href="#" className="button secondary">تواصل معنا</a>
+            <a href="#" className="button primary">ابدأ الآن</a>
           </div>
-
           <div className="plan active">
             <div className="badge">الأكثر شيوعًا</div>
             <h3>الباقة المهنية</h3>
@@ -566,19 +578,20 @@ function PricingPlans() {
             </ul>
             <a href="#" className="button primary">ابدأ الآن</a>
           </div>
-
-          <div className="plan">
-            <h3>الباقة الأساسية</h3>
-            <p className="price">$299 <span>شهريًا</span></p>
+           <div className="plan">
+            <h3>باقة المؤسسات</h3>
+            <p className="price"><strong>سعر مخصص</strong><br />حسب الاحتياجات</p>
             <ul>
-              <li>حتى 1,000 محادثة شهريًا</li>
-              <li>منصة واحدة (تليجرام أو واتساب)</li>
-              <li>دعم تقني عادي</li>
-              <li>تقارير أساسية</li>
-              <li>إعداد مجاني</li>
+              <li>محادثات غير محدودة</li>
+              <li>جميع المنصات + واجهة ويب</li>
+              <li>مدير حساب مخصص</li>
+              <li>SLA مضمون</li>
+              <li>حلول مخصصة بالكامل</li>
+              <li>دعم متقدم للذكاء الاصطناعي</li>
             </ul>
-            <a href="#" className="button primary">ابدأ الآن</a>
+            <a href="#" className="button secondary">تواصل معنا</a>
           </div>
+         
         </div>
 
         <div className="promo">
