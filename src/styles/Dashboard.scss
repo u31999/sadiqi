@@ -1,0 +1,206 @@
+.dashboard-container {
+  min-height: 100vh;
+  background-color: #0e1628;
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+
+  display: flex;
+  flex-direction: column;
+
+  // Header at the top
+  .dashboard-header {
+    background-color: #1f2937;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2c3e50;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      h2 {
+        font-size: 1.2rem;
+        color: white;
+        font-weight: bold;
+      }
+
+      .menu-toggle {
+        font-size: 1.2rem;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        background: #374151;
+        border-radius: 8px;
+        padding: 0.4rem 1rem;
+
+        input {
+          background: transparent;
+          border: none;
+          outline: none;
+          color: white;
+          font-size: 0.9rem;
+          direction: rtl;
+        }
+
+        .icon {
+          color: #9ca3af;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .sun {
+        color: #fbbf24;
+      }
+
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .avatar {
+          background-color: #6366f1;
+          border-radius: 9999px;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+        }
+
+        .details {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+
+          .name {
+            font-weight: bold;
+          }
+
+          .role {
+            font-size: 0.8rem;
+            color: #9ca3af;
+          }
+        }
+      }
+    }
+  }
+
+  // Below header layout (flex row: sidebar + content)
+  .dashboard-body {
+    display: flex;
+    flex-grow: 1;
+    min-height: 0;
+
+    .sidebar {
+      background-color: #121e36;
+      width: 220px;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .brand {
+        font-size: 1.5rem;
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+
+      .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .nav-btn {
+          background: none;
+          border: none;
+          color: #b0bec5;
+          text-align: right;
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          cursor: pointer;
+
+          &.active {
+            background-color: #1e2a47;
+            border-radius: 8px;
+            color: #fff;
+          }
+
+          &:hover {
+            background-color: #1e2a47;
+          }
+        }
+      }
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 2rem;
+      background-color: #0e1628;
+
+      .page-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+
+        .stat-box {
+          background-color: #1c2c48;
+          padding: 1rem;
+          border-radius: 8px;
+          text-align: center;
+
+          span {
+            display: block;
+            color: #a0aec0;
+            margin-bottom: 0.5rem;
+          }
+
+          strong {
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      .charts-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1.5rem;
+
+        .chart-card {
+          background-color: #1c2c48;
+          border-radius: 8px;
+          padding: 1rem;
+
+          .chart-title {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
