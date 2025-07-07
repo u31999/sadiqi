@@ -110,12 +110,27 @@
     min-height: 0;
 
     .sidebar {
-      background-color: #121e36;
-      width: 220px;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+       background-color: #121e36;
+       width: 220px;
+       padding: 2rem 1rem;
+       display: flex;
+       flex-direction: column;
+       gap: 2rem;
+       transition: transform 0.3s ease-in-out;
+       z-index: 1000;
+
+        &.closed {
+            transform: translateX(100%); // hides it to the right
+            position: absolute;
+            right: 0;
+            top: 60px; // below the header
+            height: calc(100vh - 60px);
+            box-shadow: -4px 0 8px rgba(0,0,0,0.3);
+  }
+
+        &.open {
+            transform: translateX(0);
+  }
 
       .brand {
         font-size: 1.5rem;

@@ -1,28 +1,90 @@
 .dashboard-header {
+  background-color: #121e36;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #1f2937;
-  color: #fff;
-  border-bottom: 1px solid #2c3e50;
+  padding: 0.7rem 1.5rem;
+  color: white;
+  border-bottom: 1px solid #2e3b55;
 
   .left {
-    font-weight: bold;
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      font-size: 1.2rem;
+      background: none;
+      border: none;
+      color: #bbb;
+      cursor: pointer;
+    }
+
+    .search-input {
+      background-color: #1e2a47;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: white;
+      min-width: 200px;
+
+      &::placeholder {
+        color: #aaa;
+      }
+    }
   }
 
   .right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .sun-icon {
+      color: #ffcc00;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
     .user-info {
+      position: relative;
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      span:first-child {
-        font-weight: bold;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+
+      .avatar {
+        font-size: 1.6rem;
       }
-      span:last-child {
-        font-size: 0.8rem;
-        color: #aaa;
+
+      .email {
+        font-size: 0.95rem;
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 120%;
+        right: 0;
+        background-color: #1e2a47;
+        border-radius: 6px;
+        padding: 0.5rem 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        list-style: none;
+        z-index: 100;
+
+        li {
+          padding: 0.5rem 1rem;
+          white-space: nowrap;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #2e3b55;
+          }
+        }
       }
     }
   }
