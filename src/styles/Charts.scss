@@ -1,0 +1,29 @@
+.chart-card {
+  background-color: #1c2c48;
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  .chart-title {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}
+
+.recent {
+  .conversation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #374151;
+
+    .badge {
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      &.resolved { background: #10B981; color: white; }
+      &.active { background: #f59e0b; color: white; }
+      &.escalated { background: #ef4444; color: white; }
+    }
+  }
+}

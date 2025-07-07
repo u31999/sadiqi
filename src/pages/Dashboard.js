@@ -4,6 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import '../styles/Dashboard.scss';
 import DashboardHeader from '../components/DashboardHeader';
+import { FaCommentAlt } from 'react-icons/fa'
+import { FaRobot } from 'react-icons/fa';
+import { FaChartBar } from 'react-icons/fa';
+import ConversationsChart from '../components/charts/ConversationsChart';
+import PlatformPieChart from '../components/charts/PlatformPieChart';
+import ROIBarChart from '../components/charts/ROIBarChart';
+import RecentConversations from '../components/charts/RecentConversations';
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -30,6 +38,7 @@ export default function Dashboard() {
       <div className="dashboard-body">
         {/* Sidebar */}
         <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+          
           <h2 className="brand">صديقي</h2>
           <nav className="nav">
             <button className="nav-btn active">لوحة التحكم</button>
@@ -44,17 +53,52 @@ export default function Dashboard() {
           <h1 className="page-title">لوحة التحكم</h1>
 
           <div className="stats-grid">
-            <div className="stat-box"><span>إجمالي المحادثات</span><strong>2150</strong></div>
-            <div className="stat-box"><span>متوسط وقت الاستجابة</span><strong>&lt;200ms</strong></div>
-            <div className="stat-box"><span>معدل الحل</span><strong>92%</strong></div>
-            <div className="stat-box"><span>رضا العملاء</span><strong>95%</strong></div>
+            <div className="stat-box">
+              <div className='ic-continer'>
+                  <FaCommentAlt style={{ color: '#3b82f6', fontSize: '24px' }} />
+              </div>
+              <div className='tx-continer'>
+                 <span>إجمالي المحادثات</span>
+              <strong>2150</strong>
+              </div>
+             </div>
+            <div className="stat-box">
+              <div className='ic-continer'>
+                <FaRobot style={{ color: '#10b981', fontSize: '24px' }} />
+              </div>
+              <div className='tx-continer'>
+                <span>متوسط وقت الاستجابة</span><strong>&lt;200ms</strong>
+              </div>
+              </div>
+            <div className="stat-box">
+              <div className='ic-continer'>
+                  <FaChartBar style={{ color: '#f59e0b', fontSize: '24px' }} />
+              </div>
+              <div className='tx-continer'>
+              <span>       
+              معدل الحل</span><strong>92%</strong>
+              </div>
+              </div>
+            <div className="stat-box">
+              <div className='ic-continer'>
+                    <FaRobot style={{ color: '#ef4444', fontSize: '24px' }} />
+              </div>
+              <div className='tx-continer'>
+                  <span>
+              رضا العملاء</span><strong>95%</strong>
+              </div>
+              </div>
           </div>
 
           <div className="charts-grid">
-            <div className="chart-card"><h2 className="chart-title">المحادثات عبر الزمن</h2></div>
-            <div className="chart-card"><h2 className="chart-title">توزيع المنصات</h2></div>
-          </div>
+              <ConversationsChart />
+            <PlatformPieChart />                
+           <ROIBarChart />            
+          <RecentConversations />
+           </div>
+         
         </main>
+       
       </div>
     </div>
   );

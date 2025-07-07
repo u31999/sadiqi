@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 import { FaSun, FaUserCircle } from 'react-icons/fa';
 import '../styles/DashboardHeader.scss';
+import '../styles/Dashboard.scss';
 
 export default function DashboardHeader({toggleSidebar}) {
   const [user, setUser] = useState(null);
