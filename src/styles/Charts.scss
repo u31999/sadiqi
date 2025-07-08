@@ -3,6 +3,8 @@
   border-radius: 8px;
   padding: 1rem;
   color: white;
+  max-height: 266px;
+  display: flex;
   .chart-title {
     margin-bottom: 1rem;
     font-size: 1rem;
@@ -10,6 +12,8 @@
 }
 
 .recent {
+    flex-direction: column;
+    overflow-y: auto;
   .conversation {
     display: flex;
     justify-content: space-between;

@@ -13,31 +13,16 @@ import ROIBarChart from '../components/charts/ROIBarChart';
 import RecentConversations from '../components/charts/RecentConversations';
 
 
-export default function Dashboard() {
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true); // New toggle state
-
-  useEffect(() => {
-    const checkUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      if (!data?.user) {
-        navigate('/');
-      } else {
-        setUser(data.user);
-      }
-    };
-
-    checkUser();
-  }, [navigate]);
-
-  return (
-    <div className="dashboard-container" dir="rtl">
-      <DashboardHeader user={user} toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
-
-      <div className="dashboard-body">
+function MainDashboard({sidebarOpen}) {
+  return(
+     <div className="dashboard-body">
         {/* Sidebar */}
-        <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+       <aside
+  className={`sidebar ${
+    window.innerWidth < 768 ? (sidebarOpen ? 'open' : 'closed') : 'open'
+  }`}
+>
+
           
           <h2 className="brand">صديقي</h2>
           <nav className="nav">
@@ -100,6 +85,40 @@ export default function Dashboard() {
         </main>
        
       </div>
+  )
+
+}
+
+
+export default function Dashboard() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true); // New toggle state
+
+  const toggleSidebar = () => {
+  setSidebarOpen(prev => !prev);
+};
+  
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      if (!data?.user) {
+        navigate('/');
+      } else {
+        setUser(data.user);
+      }
+    };
+
+    checkUser();
+  }, [navigate]);
+
+  return (
+    <div className="dashboard-container" dir="rtl">
+      <DashboardHeader user={user} toggleSidebar={toggleSidebar}/>
+      <MainDashboard sidebarOpen={sidebarOpen} />
+
+     
     </div>
   );
 }
