@@ -1,6 +1,6 @@
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
-import '../../styles/Charts.scss';
+import '../../../styles/Charts.scss';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale);
 

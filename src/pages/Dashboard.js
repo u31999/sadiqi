@@ -1,104 +1,57 @@
 // src/pages/Dashboard.jsx
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Routes, Route, useLocation, useNavigate as useRouterNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import '../styles/Dashboard.scss';
 import DashboardHeader from '../components/DashboardHeader';
-import { FaCommentAlt } from 'react-icons/fa'
-import { FaRobot } from 'react-icons/fa';
-import { FaChartBar } from 'react-icons/fa';
-import ConversationsChart from '../components/charts/ConversationsChart';
-import PlatformPieChart from '../components/charts/PlatformPieChart';
-import ROIBarChart from '../components/charts/ROIBarChart';
-import RecentConversations from '../components/charts/RecentConversations';
+import AgentConfig from '../components/dasboard-component/AgentConfig';
+import MainDashboard from '../components/dasboard-component/MainDashboard';
+import ConversationPage from '../components/dasboard-component/ConversationPage';
+import DashboardPlaceholder from '../components/DashboardPlaceholder';
 
+// ✅ Sidebar Component
+function Sidebar({ sidebarOpen }) {
+  const navigate = useRouterNavigate();
+  const location = useLocation();
 
-function MainDashboard({sidebarOpen}) {
-  return(
-     <div className="dashboard-body">
-        {/* Sidebar */}
-       <aside
-  className={`sidebar ${
-    window.innerWidth < 768 ? (sidebarOpen ? 'open' : 'closed') : 'open'
-  }`}
->
+  const isActive = (path) => location.pathname === path;
 
-          
-          <h2 className="brand">صديقي</h2>
-          <nav className="nav">
-            <button className="nav-btn active">لوحة التحكم</button>
-            <button className="nav-btn">تكوين الوكيل</button>
-            <button className="nav-btn">المحادثات</button>
-            <button className="nav-btn">الإعدادات</button>
-          </nav>
-        </aside>
-
-        {/* Main Content */}
-        <main className="main-content">
-          <h1 className="page-title">لوحة التحكم</h1>
-
-          <div className="stats-grid">
-            <div className="stat-box">
-              <div className='ic-continer'>
-                  <FaCommentAlt style={{ color: '#3b82f6', fontSize: '24px' }} />
-              </div>
-              <div className='tx-continer'>
-                 <span>إجمالي المحادثات</span>
-              <strong>2150</strong>
-              </div>
-             </div>
-            <div className="stat-box">
-              <div className='ic-continer'>
-                <FaRobot style={{ color: '#10b981', fontSize: '24px' }} />
-              </div>
-              <div className='tx-continer'>
-                <span>متوسط وقت الاستجابة</span><strong>&lt;200ms</strong>
-              </div>
-              </div>
-            <div className="stat-box">
-              <div className='ic-continer'>
-                  <FaChartBar style={{ color: '#f59e0b', fontSize: '24px' }} />
-              </div>
-              <div className='tx-continer'>
-              <span>       
-              معدل الحل</span><strong>92%</strong>
-              </div>
-              </div>
-            <div className="stat-box">
-              <div className='ic-continer'>
-                    <FaRobot style={{ color: '#ef4444', fontSize: '24px' }} />
-              </div>
-              <div className='tx-continer'>
-                  <span>
-              رضا العملاء</span><strong>95%</strong>
-              </div>
-              </div>
-          </div>
-
-          <div className="charts-grid">
-              <ConversationsChart />
-            <PlatformPieChart />                
-           <ROIBarChart />            
-          <RecentConversations />
-           </div>
-         
-        </main>
-       
-      </div>
-  )
-
+  return (
+    <aside
+      className={`sidebar ${
+        window.innerWidth < 768 ? (sidebarOpen ? 'open' : 'closed') : 'open'
+      }`}
+    >
+      <h2 className="brand">صديقي</h2>
+      <nav className="nav">
+        <button className={`nav-btn ${isActive('/') ? 'active' : ''}`} onClick={() => navigate('/dashboard')}>
+          لوحة التحكم
+        </button>
+        <button className={`nav-btn ${isActive('/agent-config') ? 'active' : ''}`} onClick={() => navigate('/dashboard/agent-config')}>
+          تكوين الوكيل
+        </button>
+        <button className={`nav-btn ${isActive('/agent-config') ? 'active' : ''}`} onClick={() => navigate('/dashboard/conversation')}>
+          المحادثات</button>
+        <button className="nav-btn">الإعدادات</button>
+      </nav>
+    </aside>
+  );
 }
+
+
+
 
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true); // New toggle state
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const underCreation = false;
 
   const toggleSidebar = () => {
-  setSidebarOpen(prev => !prev);
-};
-  
+    setSidebarOpen(prev => !prev);
+  };
 
   useEffect(() => {
     const checkUser = async () => {
@@ -109,16 +62,30 @@ export default function Dashboard() {
         setUser(data.user);
       }
     };
-
     checkUser();
   }, [navigate]);
 
+
+  if (underCreation) {
+    return <DashboardPlaceholder />
+  }
+  else {
   return (
     <div className="dashboard-container" dir="rtl">
-      <DashboardHeader user={user} toggleSidebar={toggleSidebar}/>
-      <MainDashboard sidebarOpen={sidebarOpen} />
-
-     
+      <DashboardHeader user={user} toggleSidebar={toggleSidebar} />
+      <div className="dashboard-body">
+        <Sidebar sidebarOpen={sidebarOpen} />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<MainDashboard />} />
+            <Route path="/agent-config" element={<AgentConfig />} />
+            <Route path="/conversation" element={<ConversationPage />} />
+          </Routes>
+        </main>
+      </div>
     </div>
   );
 }
+}
+
+

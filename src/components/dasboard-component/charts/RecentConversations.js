@@ -1,4 +1,4 @@
-import '../../styles/Charts.scss';
+import '../../../styles/Charts.scss';
 
 const mockConversations = [
   { name: 'Ali Hassan', message: 'Thank you for your help, Nora!', status: 'Resolved' },

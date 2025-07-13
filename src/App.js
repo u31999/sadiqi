@@ -1,14 +1,34 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
+import { supabase } from './supabaseClient';
 
-function App() {
+function AppRouter() {
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setIsAuthenticated(!!user);
+    });
+  }, []);
+
+  if (isAuthenticated === null) return null; // or show a loading spinner
+
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      {/* If user is logged in and visits "/", redirect to /dashboard */}
       <Route
-        path="/dashboard"
+        path="/"
+        element={
+          isAuthenticated ? <Navigate to="/dashboard" replace /> : <Home />
+        }
+      />
+
+      {/* Dashboard + nested pages */}
+      <Route
+        path="/dashboard/*"
         element={
           <ProtectedRoute>
             <Dashboard />
@@ -19,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRouter;

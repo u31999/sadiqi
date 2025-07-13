@@ -1,0 +1,91 @@
+.agent-config-container {
+  background: #0e1628;
+  color: white;
+  padding: 2rem;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    button {
+      background: #3b82f6;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+
+  .input-group {
+    margin-top: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: none;
+      background: #1f2937;
+      color: white;
+    }
+  }
+
+  .section {
+    margin-top: 2rem;
+
+    h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    textarea {
+      width: 100%;
+      background: #1f2937;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      color: white;
+      resize: vertical;
+    }
+
+    small {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #9ca3af;
+    }
+  }
+
+  .tools-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .tool-card {
+      flex: 1 1 30%;
+      background: #1f2937;
+      padding: 1rem;
+      border-radius: 8px;
+
+      strong {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      p {
+        color: #9ca3af;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
