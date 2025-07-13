@@ -47,7 +47,7 @@ export default function Dashboard() {
   const [user, setUser] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const underCreation = false;
+  const underCreation = true;
 
   const toggleSidebar = () => {
     setSidebarOpen(prev => !prev);
