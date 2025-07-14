@@ -1,0 +1,18 @@
+steps:
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["ci"]
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "build"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run",
+        "deploy",
+        "YOUR_SERVICE_NAME",
+        "--source=.",
+        "--region=us-central1",
+        "--platform=managed",
+        "--allow-unauthenticated",
+      ]
+
+timeout: "900s"
