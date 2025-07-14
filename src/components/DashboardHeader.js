@@ -4,10 +4,13 @@ import { supabase } from '../supabaseClient';
 import { FaSun, FaUserCircle } from 'react-icons/fa';
 import '../styles/DashboardHeader.scss';
 import '../styles/Dashboard.scss';
+import { signOut } from '../utils/auth';
 
 export default function DashboardHeader({toggleSidebar}) {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -37,7 +40,7 @@ export default function DashboardHeader({toggleSidebar}) {
               <ul className="dropdown">
                 <li>الملف الشخصي</li>
                 <li>الإعدادات</li>
-                <li onClick={() => supabase.auth.signOut()}>تسجيل الخروج</li>
+                <li onClick={() => signOut}>تسجيل الخروج</li>
               </ul>
             )}
           </div>

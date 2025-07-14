@@ -4,7 +4,6 @@ $background-color: #F9FAFB;
 $text-color: #1F2937;
 
 .landing-page {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   min-height: 100vh;
   font-family: sans-serif;
@@ -12,6 +11,8 @@ $text-color: #1F2937;
   .header {
     text-align: center;
     padding: 4rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    font-family: 'Tajawal', Arial, sans-serif !important;
 
     .icon {
        font-size: 3rem;
@@ -19,8 +20,9 @@ $text-color: #1F2937;
     }
 
     .title {
-      font-size: 2rem;
-      font-weight: bold;
+      font-size: 3rem;
+      line-height: 1;
+      font-weight: 700;
       margin-bottom: 0.5rem;
     }
 
@@ -34,6 +36,8 @@ $text-color: #1F2937;
     .description {
       max-width: 700px;
       margin: 0 auto 2rem;
+      line-height: 1.625;
+      font-size: 1.25rem;
     }
 
     .header-buttons {

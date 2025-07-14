@@ -68,25 +68,33 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
 
-        @media (max-width: 640px) {
-          grid-template-columns: 1fr;
-        }
+      
 
         .card {
           background: #fff;
-          padding: 1rem;
           border-radius: 0.75rem;
           box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
           text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem;
 
           .value {
             font-size: 1.5rem;
             font-weight: bold;
+            flex: 0 0 50%;
+            box-sizing: border-box;
+            margin: 0px;
           }
 
           .label {
             font-size: 0.9rem;
             color: #555;
+            flex: 0 0 50%;
+            box-sizing: border-box;
+            margin: 0px;
           }
 
           &.green .value { color: #10b981; }
@@ -138,7 +146,6 @@
   color: black;
 
   .container {
-    max-width: 1200px;
     margin: 0 auto;
 
     .section-header {
@@ -167,18 +174,18 @@
     .cards {
       display: flex;
       gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
         
-    @media (min-width: 768px) {
-    flex-wrap: nowrap;
-  }
+   
 
       
 
       .card {
         background-color: white;
         border-radius: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
         padding: 2rem;
         width: 220px;
         text-align: center;
@@ -219,6 +226,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;;
      transform: translateY(-5px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
     }
 
     .steps {
@@ -621,6 +629,7 @@
         font-size: 1.2rem;
         margin-bottom: 1.5rem;
         font-weight: bold;
+        columns: black;
       }
 
       .bar-row {

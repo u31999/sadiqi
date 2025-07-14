@@ -1,5 +1,6 @@
 // src/components/DashboardPlaceholder.jsx
 import React from 'react';
+import { signOut } from '../utils/auth';
 
 export default function DashboardPlaceholder() {
   return (
@@ -10,6 +11,11 @@ export default function DashboardPlaceholder() {
           We're crafting an insightful experience for you. Please check back soon!
         </p>
         <div style={styles.spinner}></div>
+        <div style={styles.btnContainer}>
+          <button style={styles.btn} onClick={() => signOut()}>
+            Exit
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -58,6 +64,17 @@ const styles = {
     animation: 'spin 1.5s linear infinite',
     margin: '0 auto',
   },
+  btnContainer: {
+    paddingTop: '2rem',
+  },
+  btn: {
+    fontWeight: '900',
+    padding: '0.1rem 2rem',
+    borderRadius: '1rem',
+    backgroundColor: '#8d7eca',
+    color: 'white',
+    border: 'none',
+  }
 };
 
 // Inject keyframe animation globally (you can also move this to a global CSS if preferred)
