@@ -5,6 +5,7 @@ import LoginButton from "../components/LoginButton";
 import Footer from "../components/Footer";
 import AuthModal from '../components/AuthModal'
 import { useState } from "react";
+import Chatbot from './../components/Chatbot';
 
 function Header(){
   const [showLogin, setShowLogin] = useState(false);
@@ -680,6 +681,7 @@ export default function Home() {
      <SuccessStory />
      <PricingPlans />
      <ContactSteps />
+     <Chatbot />
      <Footer />
      
     </div>
